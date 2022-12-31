@@ -34,7 +34,7 @@ childRouter
             }
         }
 
-        child.giftid = gift?.id ?? null;
+        child.giftId = gift?.id ?? null;
         await child.update()
 
         res.redirect('/child')
