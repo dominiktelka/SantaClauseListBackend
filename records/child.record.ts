@@ -5,7 +5,7 @@ import {FieldPacket} from "mysql2";
 
 type ChildRecordResults = [ChildRecord[],FieldPacket[]]
 
-export class ChildRecord implements ChildRecord{
+export class ChildRecord implement ChildRecord{
     id?: string;
     name: string;
     giftId: string;
