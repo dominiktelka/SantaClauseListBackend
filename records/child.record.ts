@@ -5,17 +5,17 @@ import {FieldPacket} from "mysql2";
 
 type ChildRecordResults = [ChildRecord[],FieldPacket[]]
 
-export class ChildRecord{
+export class ChildRecord implements ChildRecord{
     id?: string;
     name: string;
-    giftid: string;
+    giftId: string;
     constructor(obj: ChildRecord) {
         if(!obj.name || obj.name.length < 3 || obj.name.length > 25){
             throw new ValidationError('Imię musi mięc od 3 do 55 znaków.');
         }
         this.name = obj.name;
         this.id = obj.id;
-        this.giftid = obj.giftid
+        this.giftId = obj.giftId
     }
 
     async insert(): Promise<string>{
@@ -45,7 +45,7 @@ export class ChildRecord{
         await pool.execute("UPDATE `children` SET `name` = :name, `giftid` = :giftid WHERE `id`= :id",{
             id: this.id,
             name: this.name,
-            giftid: this.giftid
+            giftid: this.giftId
         });
     }
 
