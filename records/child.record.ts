@@ -45,7 +45,7 @@ export class ChildRecord implements ChildRecord{
         await pool.execute("UPDATE `children` SET `name` = :name, `giftid` = :giftid WHERE `id`= :id",{
             id: this.id,
             name: this.name,
-            giftid: this.giftId
+            giftId: this.giftId
         });
     }
 
