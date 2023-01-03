@@ -2,7 +2,7 @@ import {Router} from "express";
 
 import {GiftRecord} from "../records/gift.record";
 import {ValidationError} from "../utils/error";
-import {GetSingleGiftRes, GiftEntity} from "../types";
+import {CreateGiftReq, GetSingleGiftRes, GiftEntity} from "../types";
 
 export const   giftRouter = Router();
 
@@ -11,7 +11,7 @@ giftRouter
         const giftsList = await GiftRecord.listAll()// over here we are taking all gifts from function created inside Class GiftRecord. Later we need to create layout in list.hbs
         res.json({
             giftsList,
-        })
+        } as unknown as CreateGiftReq)
     })
     .get('/:giftId', async (req,res)=>{
         const gift = await GiftRecord.getOne(req.params.giftId)

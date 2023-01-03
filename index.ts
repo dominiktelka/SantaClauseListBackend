@@ -22,7 +22,7 @@ const app = express();
 
         app.use(express.json());
 
-        app.use('/child',childRouter);
+        app.use('/children',childRouter);
         app.use('/gift', giftRouter)
 
         app.use(handleError);
