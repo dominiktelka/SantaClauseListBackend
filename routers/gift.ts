@@ -11,7 +11,7 @@ giftRouter
         const giftsList = await GiftRecord.listAll()// over here we are taking all gifts from function created inside Class GiftRecord. Later we need to create layout in list.hbs
         res.json({
             giftsList,
-        } as unknown as CreateGiftReq)
+        })
     })
     .get('/:giftId', async (req,res)=>{
         const gift = await GiftRecord.getOne(req.params.giftId)
@@ -41,7 +41,7 @@ giftRouter
     .post('/', async (req,res)=>{
         // req.body show us exactly that what we are sendin from page. For example we adding new presents to list and in moment when we click save everything what we add go to req.body like name and count
 
-        const newGift = new GiftRecord(req.body as GiftEntity);
+        const newGift = new GiftRecord(req.body as CreateGiftReq);
         await newGift.insert();
 
         res.json(newGift);
