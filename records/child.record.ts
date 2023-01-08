@@ -44,7 +44,7 @@ export class ChildRecord implements ChildEntity{
         return results.length === 0 ? null : new ChildRecord(results[0]);
     }
     async update(): Promise<void>{
-        await pool.execute("UPDATE `children` SET `name` = :name, `giftid` = :giftid WHERE `id`= :id",{
+        await pool.execute("UPDATE `children` SET `name` = :name, `giftId` = :giftId WHERE `id`= :id",{
             id: this.id,
             name: this.name,
             giftId: this.giftId
