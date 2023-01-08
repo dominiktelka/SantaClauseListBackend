@@ -1,10 +1,10 @@
 import {NextFunction, Request, Response} from "express";
 
 export class ValidationError extends Error{}
-export class NotFoundError extends Error{}
 
 export const handleError = (err:Error, req:Request,res:Response, next:NextFunction):void =>{
-    if(err instanceof NotFoundError){
+    // If in my prorgram will be elemenet where we go inside and it dont exist i should use code like below
+    /* if(err instanceof NotFoundError){
         res
             .status(404)
             .render('error',{
@@ -12,15 +12,13 @@ export const handleError = (err:Error, req:Request,res:Response, next:NextFuncti
             });
         return
     }
+    */
+
     console.error(err);
 
     res
         .status(err instanceof ValidationError ? 400 : 500)
         .json({
-        message: err instanceof ValidationError ? err.message : 'Sorry, try again later.'
+        message: err instanceof ValidationError ? err.message : 'Sorry, try again later.',
         });
 };
-
-module.exports = {
-    handleError, ValidationError, NotFoundError
-}
