@@ -31,7 +31,7 @@ giftRouter
         }
 
         if( await gift.countGivenGifts() > 0){
-            throw new ValidationError('Cannot remove given gift');
+            throw new ValidationError('Cannot remove given gift. The gift is assigned to the child');
         }
 
         await gift.delete();
