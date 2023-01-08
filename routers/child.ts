@@ -6,7 +6,7 @@ import {
     CreateChildReq,
     ListChildrenRes,
     SetGiftForChildReq
-} from "../types/child/child";
+} from "../types";
 //
 
 export const childRouter = Router();
@@ -36,7 +36,6 @@ childRouter
         if(child === null){
             throw new ValidationError('Nie znaleziono dziecka z podanym ID')
         }
-
         const gift = body.giftId === '' ? null : await GiftRecord.getOne(body.giftId)
         if(gift){
             if(gift.count <= await gift.countGivenGifts()){
